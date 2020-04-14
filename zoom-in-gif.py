@@ -7,8 +7,9 @@ def zoom_in_gif(img, num_frames, max_zoom_percent):
     zoom_step = pow(max_zoom, 1.0/n)
     w = img.width
     h = img.height
+    layer = pdb.gimp_layer_copy(img.layers[0], False)
     for _ in range(n):
-        new_layer = pdb.gimp_layer_copy(img.layers[0], False)
+        new_layer = pdb.gimp_layer_copy(layer, False)
         img.add_layer(new_layer)
         w *= zoom_step
         h *= zoom_step
